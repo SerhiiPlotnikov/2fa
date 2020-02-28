@@ -47,7 +47,8 @@
 
                                     @if(request()->session()->get('authy.using_sms'))
                                         <hr>
-                                        <p class="form-text">Token not arrived? <a href="#">Resend token</a></p>
+                                        <p class="form-text">Token not arrived? <a href="{{route('resend')}}">Resend
+                                                token</a></p>
                                     @endif
 
                                 </div>

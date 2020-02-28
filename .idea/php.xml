@@ -102,7 +102,7 @@
   </component>
   <component name="PhpInterpreters">
     <interpreters>
-      <interpreter id="ca7ef94f-bd4e-49e1-810e-ddb4dd04a617" name="Remote PHP 7.4" home="vagrant://DATA" debugger_id="php.debugger.XDebug">
+      <interpreter id="15957970-4cde-4858-9ef9-3a877d215e9a" name="Remote PHP 7.4" home="vagrant://DATA" debugger_id="php.debugger.XDebug">
         <remote_data VAGRANT_FOLDER="$PROJECT_DIR$" INTERPRETER_PATH="/usr/bin/php" HELPERS_PATH="/home/vagrant/.phpstorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" />
       </interpreter>
     </interpreters>
@@ -196,9 +196,4 @@
     </phpInfoCache>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
-  <component name="PhpUnit">
-    <phpunit_settings>
-      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/phpunit.xml" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
-    </phpunit_settings>
-  </component>
 </project>

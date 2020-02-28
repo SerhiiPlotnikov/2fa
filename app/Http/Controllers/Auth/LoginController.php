@@ -28,7 +28,6 @@ class LoginController extends Controller
     protected string $redirectTo = RouteServiceProvider::HOME;
     protected string $redirectToToken = '/auth/token';
 
-
     private AuthyService $authy;
 
     public function __construct(AuthyService $authy)
