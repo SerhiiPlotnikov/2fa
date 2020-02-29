@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="homestead@localhost" uuid="57f857ab-15d0-4140-878a-70c6c6fdfa25">
-      <database-info product="MySQL" version="5.7.28-0ubuntu0.18.04.4" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.13 (Revision: 66459e9d39c8fd09767992bc592acd2053279be6)" dbms="MYSQL" exact-version="5.7.28" exact-driver-version="8.0">
+    <data-source name="homestead@localhost" uuid="6d811926-370a-40f2-8aae-55ad5cf013f9">
+      <database-info product="MySQL" version="5.7.28-0ubuntu0.18.04.4" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.7.28" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
@@ -21,7 +21,7 @@
         <user>vagrant</user>
         <use-password>false</use-password>
         <auth-type>KEY_PAIR</auth-type>
-        <private-key-path>C:\work\2fa\.vagrant\machines\2fa\virtualbox\private_key</private-key-path>
+        <private-key-path>$PROJECT_DIR$/.vagrant/machines/test/virtualbox/private_key</private-key-path>
       </ssh-properties>
     </data-source>
   </component>

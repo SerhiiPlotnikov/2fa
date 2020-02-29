@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App;
 
@@ -42,14 +43,44 @@ class User extends Authenticatable
         return $this->hasOne(PhoneNumber::class);
     }
 
-    public function hasTwoFactorAuthenticationEnabled()
+    public function hasTwoFactorAuthenticationEnabled(): bool
     {
         return $this->two_factor_type !== 'off';
     }
 
-    public function hasSmsTwoFactorAuthenticationEnabled()
+    public function hasSmsTwoFactorAuthenticationEnabled(): bool
     {
         return $this->two_factor_type === 'sms';
+    }
 
+    public function hasTwoFactorType(string $type): bool
+    {
+        return $this->two_factor_type === $type;
+    }
+
+    public function hasDiallingCode(int $diallingCodeId): bool
+    {
+        if ($this->hasPhoneNumber()) {
+            return $this->phoneNumber->diallingCode->id === $diallingCodeId;
+        }
+        return false;
+    }
+
+    public function hasPhoneNumber()
+    {
+        return $this->phoneNumber !== null;
+    }
+
+    public function getPhoneNumber(): string
+    {
+        if ($this->hasPhoneNumber()) {
+            return $this->phoneNumber->phone_number;
+        }
+        return '';
+    }
+
+    public function registeredForTwoFactorAuthentication(): bool
+    {
+        return $this->authy_id !== null;
     }
 }
