@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa1d0da5-92a8-49a1-8af0-314d12a4877f" name="Default Changelist" comment="" />
+    <list default="true" id="fa1d0da5-92a8-49a1-8af0-314d12a4877f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +44,9 @@
       </path>
     </expand>
     <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="Remote PHP 7.4">
     <include_path>
@@ -144,6 +149,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1YOIRvG06mahpiFmEnH2pdN1hEl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -174,7 +180,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582807208089</updated>
       <workItem from="1582807209526" duration="6770000" />
-      <workItem from="1582879643598" duration="18878000" />
+      <workItem from="1582879643598" duration="19525000" />
     </task>
     <servers />
   </component>
@@ -214,5 +220,9 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="649" y="366" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582879643573" />
+    <state x="672" y="332" width="633" height="413" key="git4idea.merge.GitPullDialog" timestamp="1582963256344">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="672" y="332" width="633" height="413" key="git4idea.merge.GitPullDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582963256344" />
   </component>
 </project>
