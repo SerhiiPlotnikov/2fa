@@ -5,22 +5,24 @@ namespace App\Http\Controllers\Auth;
 use App\Exceptions\InvalidTokenException;
 use App\Exceptions\SmsRequestFailedException;
 use App\Http\Controllers\Controller;
-use App\Services\AuthyService;
+use App\Services\AuthyAuthentication;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthTokenController extends Controller
 {
-    private AuthyService $authy;
+    private AuthyAuthentication $authy;
 
-    public function __construct(AuthyService $authy)
+    public function __construct(AuthyAuthentication $authy)
     {
         $this->authy = $authy;
     }
 
     public function getToken(Request $request)
     {
+
+        dd(!$request->session()->has('authy'));
         if (!$request->session()->has('authy')) {
             return redirect()->route('home');
         }
@@ -32,13 +34,25 @@ class AuthTokenController extends Controller
         $this->validate($request, [
             'token' => 'required'
         ]);
+        if ($request->get('two-factor-type') === 'app') {
+            try {
+                $verification = $this->authy->verifyToken($request->get('token'));
+//                $user = $request->user();
+//                $user->save();
+            } catch (InvalidTokenException $exception) {
 
-        try {
-            $verification = $this->authy->verifyToken($request->get('token'));
-        } catch (InvalidTokenException $exception) {
-            return redirect()->back()->withErrors([
-                'token' => 'Invalid token'
-            ]);
+                return redirect()->back()->withErrors([
+                    'token' => 'Invalid token'
+                ]);
+            }
+        } else {
+            try {
+                $verification = $this->authy->verifyToken($request->get('token'));
+            } catch (InvalidTokenException $exception) {
+                return redirect()->back()->withErrors([
+                    'token' => 'Invalid token'
+                ]);
+            }
         }
 
         if (Auth::loginUsingId(

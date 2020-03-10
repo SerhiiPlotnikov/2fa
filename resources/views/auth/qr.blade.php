@@ -5,20 +5,18 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Two factor authentication</div>
+                    <div class="card-header">Enable 2FA via Google Authenticator app</div>
 
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
                         <form method="POST" action="{{ route('post-token') }}">
                             @csrf
+                            <p>Scan this barcode with your Google Authenticator App: </p>
+                            <img src="{{$qrUrl}}" alt="">
+                            <p>Enter the code to Enable 2FA</p>
 
                             <div class="form-group row">
-                                <label for="token" class="col-md-4 col-form-label text-md-right">Authenticator Code</label>
+                                <label for="token" class="col-md-4 col-form-label text-md-right">Authenticator
+                                    Code</label>
 
                                 <div class="col-md-6">
                                     <input
@@ -39,22 +37,16 @@
                                 </div>
                             </div>
 
+                            <input type="hidden" name="two-factor-type" value="{{$twoFactorType}}">
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Validate token
+                                        Enable 2FA
                                     </button>
-
-                                    @if(request()->session()->get('authy.using_sms'))
-                                        <hr>
-                                        <p class="form-text">Token not arrived? <a href="{{route('resend')}}">Resend
-                                                token</a></p>
-                                    @endif
-
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>

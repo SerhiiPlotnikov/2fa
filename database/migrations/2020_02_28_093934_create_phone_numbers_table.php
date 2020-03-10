@@ -16,8 +16,8 @@ class CreatePhoneNumbersTable extends Migration
         Schema::create('phone_numbers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('phone_number');
-            $table->integer('dialling_code_id')->unsigned();
+            $table->string('phone_number')->nullable();
+            $table->integer('dialling_code_id')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

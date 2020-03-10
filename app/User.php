@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->two_factor_type === 'sms';
     }
 
+    public function hasGoogleTwoFactorAuthenticationEnabled(): bool
+    {
+        return $this->two_factor_type === 'app';
+    }
+
     public function hasTwoFactorType(string $type): bool
     {
         return $this->two_factor_type === $type;
@@ -68,7 +73,7 @@ class User extends Authenticatable
 
     public function hasPhoneNumber()
     {
-        return $this->phoneNumber !== null;
+        return $this->phoneNumber && $this->phoneNumber->phone_number !== null;
     }
 
     public function getPhoneNumber(): string
