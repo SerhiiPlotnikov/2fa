@@ -3,6 +3,7 @@ return [
     'types' => [
         'off' => 'Disabled',
         'sms' => 'SMS',
-        'app' => 'Google Authenticator app'
+        'google' => 'Google Authenticator app',
+        'authy' => 'Authy app'
     ]
 ];

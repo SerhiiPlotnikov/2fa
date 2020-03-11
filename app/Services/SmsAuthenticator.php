@@ -6,16 +6,15 @@ namespace App\Services;
 use App\Exceptions\SmsRequestFailedException;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
-class AuthBySms extends Strategy
+class SmsAuthenticator extends Authenticator
 {
     public function request(Request $request, User $user)
     {
         Auth::logout();
 
-        $this->writeToSession($request, $user);
+        $this->writeUserToSession($request, $user);
 
         try {
             $response = $this->client->requestSms(
@@ -30,8 +29,9 @@ class AuthBySms extends Strategy
         } catch (SmsRequestFailedException $exception) {
             return redirect()->back();
         }
+
         $request->session()->push('authy.using_sms', true);
 
-        return redirect($this->redirectTokenPath());
+        return redirect(self::REDIRECT_TO_TOKEN);
     }
 }

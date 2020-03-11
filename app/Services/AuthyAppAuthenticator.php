@@ -8,20 +8,19 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthByAuthyApp extends Strategy
+class AuthyAppAuthenticator extends Authenticator
 {
     public function request(Request $request, User $user)
     {
-        $this->guard()->logout();
-        $this->writeToSession($request, $user);
-        $request = $this->client->requestSms($user->authy_id,);
+        Auth::logout();
 
-        dd($request);
+        $this->writeUserToSession($request, $user);
+        $request = $this->client->requestSms($user->authy_id);
+
         if (!$request->ok()) {
             throw new SmsRequestFailedException();
         }
 
-        return redirect()->route('get-token');
-//        return redirect($this->redirectTokenPath());
+        return redirect(self::REDIRECT_TO_TOKEN);
     }
 }

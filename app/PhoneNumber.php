@@ -13,7 +13,7 @@ class PhoneNumber extends Model
 
     public function diallingCode()
     {
-        return $this->hasOne(DiallingCode::class, 'id', 'dialling_code_id');
+        return $this->belongsTo(DiallingCode::class);
     }
 
     public function user()

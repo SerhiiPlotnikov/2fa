@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -58,11 +59,12 @@ class User extends Authenticatable
         return $this->two_factor_type === 'app';
     }
 
+    //+
     public function hasTwoFactorType(string $type): bool
     {
         return $this->two_factor_type === $type;
     }
-
+//+
     public function hasDiallingCode(int $diallingCodeId): bool
     {
         if ($this->hasPhoneNumber()) {
@@ -70,10 +72,13 @@ class User extends Authenticatable
         }
         return false;
     }
-
+//+
     public function hasPhoneNumber()
     {
-        return $this->phoneNumber && $this->phoneNumber->phone_number !== null;
+        return $this->whereHas('phoneNumber', function (Builder $query) {
+           $query->whereNotNull('phone_number');
+        })->exists();
+//        return $this->phoneNumber && $this->phoneNumber->phone_number !== null;
     }
 
     public function getPhoneNumber(): string

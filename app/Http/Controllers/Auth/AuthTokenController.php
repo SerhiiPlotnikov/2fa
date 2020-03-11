@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
@@ -21,11 +22,10 @@ class AuthTokenController extends Controller
 
     public function getToken(Request $request)
     {
-
-        dd(!$request->session()->has('authy'));
         if (!$request->session()->has('authy')) {
             return redirect()->route('home');
         }
+
         return view('auth.token');
     }
 
@@ -34,25 +34,13 @@ class AuthTokenController extends Controller
         $this->validate($request, [
             'token' => 'required'
         ]);
-        if ($request->get('two-factor-type') === 'app') {
-            try {
-                $verification = $this->authy->verifyToken($request->get('token'));
-//                $user = $request->user();
-//                $user->save();
-            } catch (InvalidTokenException $exception) {
 
-                return redirect()->back()->withErrors([
-                    'token' => 'Invalid token'
-                ]);
-            }
-        } else {
-            try {
-                $verification = $this->authy->verifyToken($request->get('token'));
-            } catch (InvalidTokenException $exception) {
-                return redirect()->back()->withErrors([
-                    'token' => 'Invalid token'
-                ]);
-            }
+        try {
+            $this->authy->verifyToken($request->get('token'));
+        } catch (InvalidTokenException $exception) {
+            return redirect()->back()->withErrors([
+                'token' => $exception->getMessage()
+            ]);
         }
 
         if (Auth::loginUsingId(
@@ -69,10 +57,10 @@ class AuthTokenController extends Controller
     public function getResend(Request $request)
     {
         $user = User::findOrFail($request->session()->get('authy.user_id'));
+
         if (!$user->hasSmsTwoFactorAuthenticationEnabled()) {
             return redirect()->back();
         }
-
         try {
             $this->authy->requestSms($user);
         } catch (SmsRequestFailedException $exception) {

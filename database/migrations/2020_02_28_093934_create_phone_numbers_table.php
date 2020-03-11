@@ -17,13 +17,18 @@ class CreatePhoneNumbersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('phone_number')->nullable();
-            $table->integer('dialling_code_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('dialling_code_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+
+            $table->foreign('dialling_code_id')
+                ->references('id')
+                ->on('dialling_codes')
+                ->onDelete('set null');
 
         });
     }
@@ -35,6 +40,11 @@ class CreatePhoneNumbersTable extends Migration
      */
     public function down()
     {
+        Schema::table('phone_numbers', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['dialling_code_id']);
+        });
+
         Schema::dropIfExists('phone_numbers');
     }
 }

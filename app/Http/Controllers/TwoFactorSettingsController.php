@@ -1,29 +1,32 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\DiallingCode;
-use App\Exceptions\InvalidTokenException;
 use App\Exceptions\RegistrationFailedException;
 use App\Http\Requests\Update2FASettingsRequest;
-
 use App\Services\AuthyAuthentication;
-use App\Services\AuthyFactory;
+use App\Services\PhoneService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class TwoFactorSettingsController extends Controller
 {
     private AuthyAuthentication $authy;
+    private PhoneService $phoneService;
 
-    public function __construct(AuthyAuthentication $authy)
+    public function __construct(AuthyAuthentication $authy, PhoneService $phoneService)
     {
         $this->authy = $authy;
+        $this->phoneService = $phoneService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('settings.twofactor', ['diallingCodes' => DiallingCode::all()]);
+        return view('settings.twofactor', [
+            'diallingCodes' => $this->phoneService->getDiallingCodes(),
+            'user' => $request->user(),
+            'twoFactorTypes' => config('twofactor.types')
+        ]);
     }
 
     public function update(Update2FASettingsRequest $request)
@@ -45,14 +48,12 @@ class TwoFactorSettingsController extends Controller
             }
         }
 
-        if ($request->two_factor_type === 'app') {
+        if ($request->two_factor_type === 'google') {
             $user->two_factor_type = $request->get('two_factor_type');
             $user->save();
-//
-            $qrCode = $this->authy->generateQRCode($user->authy_id, 250, $user->email);
-//            return redirect()->route('qr')->with(['qrCode' => $qrCode, 'twoFactorType' => $request->get('two_factor_type')]);
-            return redirect()->back()->with(['qrCode' => $qrCode, 'twoFactorType' => $request->get('two_factor_type')]);
 
+            $qrCode = $this->authy->generateQRCode($user->authy_id, 250, $user->email);
+            return redirect()->back()->with(['qrCode' => $qrCode, 'twoFactorType' => $request->get('two_factor_type')]);
         }
 
         $user->two_factor_type = $request->get('two_factor_type');
@@ -63,7 +64,9 @@ class TwoFactorSettingsController extends Controller
 
     public function showQrCode(Request $request)
     {
-        return view('auth.qr', ['qrUrl' => session()->get('qrCode'), 'twoFactorType' => session()->get('twoFactorType')]);
+        return view('auth.qr', [
+            'qrUrl' => session()->get('qrCode'),
+            'twoFactorType' => session()->get('twoFactorType')
+        ]);
     }
-
 }

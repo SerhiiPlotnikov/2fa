@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Factories\AuthyFactory;
 use Illuminate\Http\Request;
 use App\Exceptions\{InvalidTokenException,
     QRCodeGenerationException,
@@ -14,17 +15,14 @@ use Authy\AuthyFormatException;
 
 class AuthyAuthentication
 {
-    private Strategy $strategy;
     protected AuthyApi $client;
+    private Authenticator $strategy;
+    private AuthyFactory $authyFactory;
 
-    public function __construct(AuthyApi $client)
+    public function __construct(AuthyApi $client, AuthyFactory $authyFactory)
     {
         $this->client = $client;
-    }
-
-    public function setStrategy(string $type)
-    {
-        $this->strategy = AuthyFactory::createAuthentificator($type);
+        $this->authyFactory = $authyFactory;
     }
 
     public function registerUser(User $user): int
@@ -42,7 +40,7 @@ class AuthyAuthentication
         return $user->id();
     }
 
-    public function verifyToken(int $token, User $user = null): bool
+    public function verifyToken(string $token, User $user = null): bool
     {
         try {
             $verification = $this->client->verifyToken(
@@ -50,12 +48,11 @@ class AuthyAuthentication
                 $token
             );
         } catch (AuthyFormatException $exception) {
-            throw new InvalidTokenException();
+            throw new InvalidTokenException($exception->getMessage());
         }
 
         if (!$verification->ok()) {
-            dd($verification);
-            throw new InvalidTokenException();
+            throw new InvalidTokenException($verification->bodyvar('message'));
         }
 
         return true;
@@ -67,21 +64,6 @@ class AuthyAuthentication
         return $this->strategy->request($request, $user);
     }
 
-
-//    public function requestSms(User $user): void
-//    {
-//        $request = $this->client->requestSms(
-//            $user->authy_id,
-//            [
-//                'force' => 'true'
-//            ]
-//        );
-//
-//        if (!$request->ok()) {
-//            throw new SmsRequestFailedException();
-//        }
-//    }
-
     public function generateQRCode(int $authyId, int $size, string $label): string
     {
         $response = $this->client->generateQR($authyId, $size, $label);
@@ -92,4 +74,8 @@ class AuthyAuthentication
         return $response->bodyvar('qr_code');
     }
 
+    private function setStrategy(string $type): void
+    {
+        $this->strategy = $this->authyFactory->createAuthenticator($type);
+    }
 }

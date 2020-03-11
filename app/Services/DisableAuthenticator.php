@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\Request;
 
-class DisableAuth extends Strategy
+class DisableAuthenticator extends Authenticator
 {
     use RedirectsUsers;
 

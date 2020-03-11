@@ -2,22 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa1d0da5-92a8-49a1-8af0-314d12a4877f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Factories/AuthyFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vagrant/machines/test/virtualbox/action_set_name" beforeDir="false" afterPath="$PROJECT_DIR$/.vagrant/machines/test/virtualbox/action_set_name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthTokenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthTokenController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TwoFactorSettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TwoFactorSettingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PhoneNumber.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PhoneNumber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/AuthyServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthyServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/AuthyService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuthyAuthentication.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/AuthByAuthyApp.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuthyAppAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/AuthBySms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/SmsAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/AuthyAuthentication.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuthyAuthentication.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/AuthyFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/DisableAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/DisableAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Strategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Authenticator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/twofactor.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/twofactor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_28_093934_create_phone_numbers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_093934_create_phone_numbers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/token.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/token.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/settings/twofactor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/settings/twofactor.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,11 +189,26 @@
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/Services/Factories" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPUnit.ExampleTest.testBasicTest">
+    <configuration name="ExampleTest.testBasicTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Unit\ExampleTest" configuration_file="$PROJECT_DIR$/../../../vagrant/code/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/ExampleTest.php" method="testBasicTest" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.ExampleTest.testBasicTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -208,7 +226,7 @@
       <workItem from="1582924042801" duration="40000" />
       <workItem from="1582924090133" duration="3381000" />
       <workItem from="1583305686520" duration="49787000" />
-      <workItem from="1583834408647" duration="13335000" />
+      <workItem from="1583834408647" duration="33159000" />
     </task>
     <servers />
   </component>
@@ -226,36 +244,52 @@
     </state>
     <state x="771" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1582925103989" />
     <state x="997" y="134" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582963541294" />
-    <state x="2702" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser" timestamp="1583844582581">
+    <state x="2702" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser" timestamp="1583923612474">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2702" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583844582581" />
+    <state x="2702" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583923612474" />
     <state x="2596" y="280" width="624" height="544" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1583414309898">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2596" y="280" width="624" height="544" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583414309898" />
-    <state x="2188" y="27" width="510" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583839487174">
+    <state x="2188" y="27" width="510" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583937110038">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2188" y="27" width="510" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583839487174" />
-    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583852081642">
+    <state x="2188" y="27" width="510" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583937110038" />
+    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583943096253">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583852081642" />
+    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583943096253" />
     <state x="2087" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1583852499083">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2087" y="125" width="1653" height="855" key="DiffContextDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583852499083" />
-    <state x="2655" y="277" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583834276263">
+    <state x="2655" y="277" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583932889402">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="588" y="211" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1582925076353" />
-    <state x="2655" y="277" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583834276263" />
+    <state x="2655" y="277" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583932889402" />
     <state x="776" y="297" width="424" height="484" key="FileChooserDialogImpl/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582963530640" />
-    <state x="2626" y="333" width="497" height="373" key="NewPhpClassDialog" timestamp="1583846648753">
+    <state width="1807" height="257" key="GridCell.Tab.0.bottom" timestamp="1583944193810">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2626" y="333" width="497" height="373" key="NewPhpClassDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583846648753" />
+    <state width="1807" height="257" key="GridCell.Tab.0.bottom/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583944193810" />
+    <state width="1807" height="257" key="GridCell.Tab.0.center" timestamp="1583944193810">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="257" key="GridCell.Tab.0.center/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583944193810" />
+    <state width="1807" height="257" key="GridCell.Tab.0.left" timestamp="1583944193810">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="257" key="GridCell.Tab.0.left/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583944193810" />
+    <state width="1807" height="257" key="GridCell.Tab.0.right" timestamp="1583944193810">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583944193810" />
+    <state x="2626" y="333" width="513" height="373" key="NewPhpClassDialog" timestamp="1583942833812">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2626" y="333" width="513" height="373" key="NewPhpClassDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583942833812" />
     <state x="748" y="352" width="497" height="373" key="NewPhpClassDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582881604391" />
     <state x="2668" y="448" width="399" height="149" key="NewPhpFileDialog" timestamp="1583839986003">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -285,6 +319,10 @@
     <state x="482" y="265" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1582924090328" />
     <state x="2523" y="347" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583834414400" />
     <state x="649" y="366" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582879643573" />
+    <state x="468" y="58" width="1519" height="644" maximized="true" key="dock-window-1" timestamp="1583947653615">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="468" y="58" width="1519" height="644" maximized="true" key="dock-window-1/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583947653615" />
     <state x="672" y="332" width="633" height="413" key="git4idea.merge.GitPullDialog" timestamp="1582963360433">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

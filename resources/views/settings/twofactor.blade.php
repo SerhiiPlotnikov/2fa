@@ -26,11 +26,11 @@
                                             class="form-control @error('two_factor_type') is-invalid @enderror"
                                             name="two_factor_type"
                                         >
-                                            @foreach(config('twofactor.types') as $key=>$name)
+                                            @foreach($twoFactorTypes as $key=>$name)
                                                 <option
                                                     value="{{$key}}"
-                                                    {{old('two_factor_type') ===$key ||
-                                                    \Illuminate\Support\Facades\Auth::user()->hasTwoFactorType($key) ?'selected="selected"':''}}
+                                                    {{old('two_factor_type') === $key ||
+                                                    $user->hasTwoFactorType($key) ? 'selected="selected"':''}}
                                                 >
                                                     {{$name}}
                                                 </option>
@@ -63,7 +63,7 @@
                                                 <option
                                                     value="{{$code->id}}"
                                                     {{old('phone_number_dialling_code')===$code->id ||
-                                                        \Illuminate\Support\Facades\Auth::user()->hasDiallingCode($code->id) ?'selected="selected"':''}}
+                                                       $user->hasDiallingCode($code->id)? 'selected="selected"':''}}
                                                 >
                                                     {{$code->name}} (+{{$code->dialling_code}})
                                                 </option>
@@ -87,7 +87,7 @@
                                             type="text"
                                             class="form-control @error('phone_number') is-invalid @enderror"
                                             name="phone_number"
-                                            value="{{ old('phone_number')?old('phone_number'):\Illuminate\Support\Facades\Auth::user()->getPhoneNumber()}}"
+                                            value="{{ old('phone_number')?old('phone_number'):$user->getPhoneNumber()}}"
                                             autocomplete="phone number"
                                             autofocus
                                         >
