@@ -1,11 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\User\GetUserById\GetUserByIdAction;
+use App\Actions\User\GetUserById\GetUserByIdRequest;
 use App\Exceptions\InvalidTokenException;
 use App\Exceptions\SmsRequestFailedException;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\VerifyTokenHttpRequest;
 use App\Services\AuthyAuthentication;
 use App\User;
 use Illuminate\Http\Request;
@@ -14,10 +18,12 @@ use Illuminate\Support\Facades\Auth;
 class AuthTokenController extends Controller
 {
     private AuthyAuthentication $authy;
+    private GetUserByIdAction $getUserByIdAction;
 
-    public function __construct(AuthyAuthentication $authy)
+    public function __construct(AuthyAuthentication $authy, GetUserByIdAction $getUserByIdAction)
     {
         $this->authy = $authy;
+        $this->getUserByIdAction = $getUserByIdAction;
     }
 
     public function getToken(Request $request)
@@ -29,18 +35,16 @@ class AuthTokenController extends Controller
         return view('auth.token');
     }
 
-    public function postToken(Request $request)
+    public function verifyToken(VerifyTokenHttpRequest $request)
     {
-        $this->validate($request, [
-            'token' => 'required'
-        ]);
-
         try {
-            $this->authy->verifyToken($request->get('token'));
+            $this->authy->verifyToken($request->getToken());
         } catch (InvalidTokenException $exception) {
-            return redirect()->back()->withErrors([
-                'token' => $exception->getMessage()
-            ]);
+            return redirect()->back()->withErrors(
+                [
+                    'token' => $exception->getMessage()
+                ]
+            );
         }
 
         if (Auth::loginUsingId(
@@ -54,15 +58,18 @@ class AuthTokenController extends Controller
         return redirect()->route('home');
     }
 
-    public function getResend(Request $request)
+    public function getResendSMS(Request $request)
     {
-        $user = User::findOrFail($request->session()->get('authy.user_id'));
+        $user = $this->getUserByIdAction->execute(
+            new GetUserByIdRequest($request->session()->get('authy.user_id'))
+        );
+//        $user = User::findOrFail($request->session()->get('authy.user_id'));
 
         if (!$user->hasSmsTwoFactorAuthenticationEnabled()) {
             return redirect()->back();
         }
         try {
-            $this->authy->requestSms($user);
+            $this->authy->request($request, $user);
         } catch (SmsRequestFailedException $exception) {
             return redirect()->back();
         }

@@ -8,7 +8,7 @@
                     <div class="card-header">Enable 2FA via Google Authenticator app</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('post-token') }}">
+                        <form method="POST" action="{{ route('verify-token') }}">
                             @csrf
                             <p>Scan this barcode with your Google Authenticator App: </p>
                             <img src="{{$qrUrl}}" alt="">

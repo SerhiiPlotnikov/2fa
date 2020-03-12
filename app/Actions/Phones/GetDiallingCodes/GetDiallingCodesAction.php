@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Actions\Phones\GetDiallingCodes;
 
 use App\Repositories\DiallingCodeRepository;
 use Illuminate\Support\Collection;
 
-class PhoneService
+class GetDiallingCodesAction
 {
     private DiallingCodeRepository $diallingCodeRepository;
 
@@ -15,7 +15,7 @@ class PhoneService
         $this->diallingCodeRepository = $diallingCodeRepository;
     }
 
-    public function getDiallingCodes(): Collection
+    public function execute(): Collection
     {
         return $this->diallingCodeRepository->getAll();
     }

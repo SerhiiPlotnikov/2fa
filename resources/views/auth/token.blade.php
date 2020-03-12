@@ -14,22 +14,23 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('post-token') }}">
+                        <form method="POST" action="{{ route('verify-token') }}">
                             @csrf
 
                             <div class="form-group row">
-                                <label for="token" class="col-md-4 col-form-label text-md-right">Authenticator Code</label>
+                                <label for="token" class="col-md-4 col-form-label text-md-right">Authenticator
+                                    Code</label>
 
                                 <div class="col-md-6">
                                     <input
-                                        id="token"
-                                        type="text"
-                                        class="form-control @error('token') is-invalid @enderror"
-                                        name="token"
-                                        value="{{ old('token') }}"
-                                        required
-                                        autocomplete="token"
-                                        autofocus
+                                            id="token"
+                                            type="text"
+                                            class="form-control @error('token') is-invalid @enderror"
+                                            name="token"
+                                            value="{{ old('token') }}"
+                                            required
+                                            autocomplete="token"
+                                            autofocus
                                     >
                                     @error('token')
                                     <span class="invalid-feedback" role="alert">

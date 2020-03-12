@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Services;
@@ -8,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Exceptions\{InvalidTokenException,
     QRCodeGenerationException,
     RegistrationFailedException,
-    SmsRequestFailedException
 };
 use App\User;
 use Authy\AuthyFormatException;
@@ -16,7 +16,7 @@ use Authy\AuthyFormatException;
 class AuthyAuthentication
 {
     protected AuthyApi $client;
-    private Authenticator $strategy;
+    private Authenticator $authenticator;
     private AuthyFactory $authyFactory;
 
     public function __construct(AuthyApi $client, AuthyFactory $authyFactory)
@@ -60,8 +60,8 @@ class AuthyAuthentication
 
     public function request(Request $request, User $user)
     {
-        $this->setStrategy($user->two_factor_type);
-        return $this->strategy->request($request, $user);
+        $this->setAuthenticator($user->two_factor_type);
+        return $this->authenticator->request($request, $user);
     }
 
     public function generateQRCode(int $authyId, int $size, string $label): string
@@ -74,8 +74,8 @@ class AuthyAuthentication
         return $response->bodyvar('qr_code');
     }
 
-    private function setStrategy(string $type): void
+    private function setAuthenticator(string $type): void
     {
-        $this->strategy = $this->authyFactory->createAuthenticator($type);
+        $this->authenticator = $this->authyFactory->createAuthenticator($type);
     }
 }

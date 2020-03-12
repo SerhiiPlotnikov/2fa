@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -18,7 +19,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'two_factor_type',
+        'authy_id'
     ];
 
     /**
@@ -27,7 +32,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -44,9 +50,9 @@ class User extends Authenticatable
         return $this->hasOne(PhoneNumber::class);
     }
 
-    public function hasTwoFactorAuthenticationEnabled(): bool
+    public function hasTwoFactorType(string $type): bool
     {
-        return $this->two_factor_type !== 'off';
+        return $this->two_factor_type === $type;
     }
 
     public function hasSmsTwoFactorAuthenticationEnabled(): bool
@@ -54,17 +60,6 @@ class User extends Authenticatable
         return $this->two_factor_type === 'sms';
     }
 
-    public function hasGoogleTwoFactorAuthenticationEnabled(): bool
-    {
-        return $this->two_factor_type === 'app';
-    }
-
-    //+
-    public function hasTwoFactorType(string $type): bool
-    {
-        return $this->two_factor_type === $type;
-    }
-//+
     public function hasDiallingCode(int $diallingCodeId): bool
     {
         if ($this->hasPhoneNumber()) {
@@ -72,12 +67,15 @@ class User extends Authenticatable
         }
         return false;
     }
-//+
+
     public function hasPhoneNumber()
     {
-        return $this->whereHas('phoneNumber', function (Builder $query) {
-           $query->whereNotNull('phone_number');
-        })->exists();
+        return $this->whereHas(
+            'phoneNumber',
+            function (Builder $query) {
+                $query->whereNotNull('phone_number');
+            }
+        )->exists();
 //        return $this->phoneNumber && $this->phoneNumber->phone_number !== null;
     }
 

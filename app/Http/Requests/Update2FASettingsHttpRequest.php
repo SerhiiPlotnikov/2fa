@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Requests;
@@ -6,7 +7,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
-class Update2FASettingsRequest extends FormRequest
+class Update2FASettingsHttpRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -29,13 +30,32 @@ class Update2FASettingsRequest extends FormRequest
         ];
     }
 
+    public function getPhoneNumber(): string
+    {
+        return $this->get('phone_number');
+    }
+
+    public function getDiallingCode(): string
+    {
+        return $this->get('phone_number_dialling_code');
+    }
+
+    public function getAuthType(): string
+    {
+        return $this->get('two_factor_type');
+    }
+
     protected function getValidatorInstance(): Validator
     {
         $validator = parent::getValidatorInstance();
 
-        $validator->sometimes('phone_number_dialling_code', 'exists:dialling_codes,id', function ($input) {
-            return $input->two_factor_type !== 'off';
-        });
+        $validator->sometimes(
+            'phone_number_dialling_code',
+            'exists:dialling_codes,id',
+            function ($input) {
+                return $input->two_factor_type !== 'off';
+            }
+        );
 
         return $validator;
     }

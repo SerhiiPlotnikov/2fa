@@ -11,21 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/',
+    function () {
+        return view('welcome');
+    }
+);
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/auth/token', 'Auth\AuthTokenController@getToken')->name('get-token');
-Route::post('/auth/token', 'Auth\AuthTokenController@postToken')->name('post-token');
+Route::post('/auth/token', 'Auth\AuthTokenController@verifyToken')->name('verify-token');
 
-Route::get('/auth/token/resend', 'Auth\AuthTokenController@getResend')->name('resend');
+Route::get('/auth/token/resend', 'Auth\AuthTokenController@getResendSMS')->name('resend');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/settings/twofactor/qr', 'TwoFactorSettingsController@showQrCode')->name('qr');
-    Route::get('/settings/twofactor', 'TwoFactorSettingsController@index')->name('settings-2fa');
-    Route::put('/settings/twofactor', 'TwoFactorSettingsController@update');
-});
+Route::group(
+    ['middleware' => 'auth'],
+    function () {
+        Route::get('/settings/twofactor/qr', 'TwoFactorSettingsController@showQrCode')->name('qr');
+        Route::get('/settings/twofactor', 'TwoFactorSettingsController@index')->name('settings-2fa');
+        Route::put('/settings/twofactor', 'TwoFactorSettingsController@update');
+    }
+);

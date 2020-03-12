@@ -2,25 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa1d0da5-92a8-49a1-8af0-314d12a4877f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Factories/AuthyFactory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthTokenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthTokenController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TwoFactorSettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TwoFactorSettingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/PhoneNumber.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PhoneNumber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthyServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthyServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/AuthByAuthyApp.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuthyAppAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/AuthBySms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/SmsAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Update2FASettingsRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Update2FASettingsHttpRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/AuthyAuthentication.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuthyAuthentication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/AuthyFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/DisableAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/DisableAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Strategy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Authenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/PhoneService.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/twofactor.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/twofactor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_28_093934_create_phone_numbers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_28_093934_create_phone_numbers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/qr.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/qr.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/token.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/token.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/settings/twofactor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/settings/twofactor.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,10 +180,13 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Actions" />
+      <recent name="$PROJECT_DIR$/app/Services/Phones/UpdatePhoneNumberByUser" />
+      <recent name="$PROJECT_DIR$/app/Services/Phones" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/app/Services/Factories" />
     </key>
@@ -226,7 +222,7 @@
       <workItem from="1582924042801" duration="40000" />
       <workItem from="1582924090133" duration="3381000" />
       <workItem from="1583305686520" duration="49787000" />
-      <workItem from="1583834408647" duration="33159000" />
+      <workItem from="1583834408647" duration="49566000" />
     </task>
     <servers />
   </component>
@@ -244,26 +240,26 @@
     </state>
     <state x="771" y="84" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1582925103989" />
     <state x="997" y="134" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582963541294" />
-    <state x="2702" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser" timestamp="1583923612474">
+    <state x="2702" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser" timestamp="1584019080045">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2702" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583923612474" />
+    <state x="2702" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1584019080045" />
     <state x="2596" y="280" width="624" height="544" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1583414309898">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2596" y="280" width="624" height="544" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583414309898" />
-    <state x="2188" y="27" width="510" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583937110038">
+    <state x="2188" y="27" width="510" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1584026021173">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2188" y="27" width="510" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583937110038" />
-    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583943096253">
+    <state x="2188" y="27" width="510" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1584026021172" />
+    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584021867108">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583943096253" />
-    <state x="2087" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1583852499083">
+    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1584021867108" />
+    <state x="2087" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1584025341132">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2087" y="125" width="1653" height="855" key="DiffContextDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583852499083" />
+    <state x="2087" y="125" width="1653" height="855" key="DiffContextDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1584025341132" />
     <state x="2655" y="277" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583932889402">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -286,20 +282,21 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1807" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583944193810" />
-    <state x="2626" y="333" width="513" height="373" key="NewPhpClassDialog" timestamp="1583942833812">
+    <state x="2626" y="333" width="729" height="373" key="NewPhpClassDialog" timestamp="1584025946998">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2626" y="333" width="513" height="373" key="NewPhpClassDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583942833812" />
+    <state x="2626" y="333" width="729" height="373" key="NewPhpClassDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1584025946998" />
     <state x="748" y="352" width="497" height="373" key="NewPhpClassDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582881604391" />
     <state x="2668" y="448" width="399" height="149" key="NewPhpFileDialog" timestamp="1583839986003">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2668" y="448" width="399" height="149" key="NewPhpFileDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1583839986003" />
     <state x="789" y="464" width="399" height="149" key="NewPhpFileDialog/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582967974101" />
-    <state x="317" y="99" key="SettingsEditor" timestamp="1582931219077">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2316" y="130" key="SettingsEditor" timestamp="1584019949574">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="317" y="99" key="SettingsEditor/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1582931219077" />
+    <state x="2316" y="130" key="SettingsEditor/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1584019949574" />
     <state x="449" y="153" key="SettingsEditor/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1582879830900" />
     <state x="872" y="436" width="367" height="230" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1582883171288">
       <screen x="67" y="27" width="1853" height="1053" />

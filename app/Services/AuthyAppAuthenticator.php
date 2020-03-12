@@ -15,9 +15,10 @@ class AuthyAppAuthenticator extends Authenticator
         Auth::logout();
 
         $this->writeUserToSession($request, $user);
-        $request = $this->client->requestSms($user->authy_id);
+        $response = $this->client->requestSms($user->authy_id);
 
-        if (!$request->ok()) {
+        if (!$response->ok()) {
+            dd($response);
             throw new SmsRequestFailedException();
         }
 
