@@ -50,19 +50,19 @@ final class TwoFactorSettingsController extends Controller
         $user = $request->user();
 
         try {
-            $this->updateUserByPhoneAction->execute(
-               new UpdateUserByPhoneRequest(
+            $response = $this->updateUserByPhoneAction->execute(
+                new UpdateUserByPhoneRequest(
                     $user,
                     $request->getPhoneNumber(),
                     $request->getDiallingCode(),
                     $request->getAuthType()
-            ));
+                )
+            );
         } catch (\Throwable $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
-        if ($request->getAuthType() === User::TWO_FACTOR_AUTH_GOOGLE_APP_TYPE) {
-            $qrCode = $this->authy->generateQRCode($user->authy_id, 250, $user->email);
+        if ($qrCode = $response->getQrCode()) {
             return redirect()->back()->with(
                 [
                     'qrCode' => $qrCode,

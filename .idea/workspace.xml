@@ -4,19 +4,8 @@
     <list default="true" id="fa1d0da5-92a8-49a1-8af0-314d12a4877f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Actions/Phones/UpdateUserByPhone/UpdateUserByPhoneAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Phones/UpdateUserByPhone/UpdateUserByPhoneAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/Phones/UpdateUserByPhone/UpdateUserByPhoneRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Phones/UpdateUserByPhone/UpdateUserByPhoneRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/User/GetUserById/GetUserByIdAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/User/GetUserByIdAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Actions/User/GetUserById/GetUserByIdRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/User/GetUserByIdRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DiallingCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DiallingCode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthTokenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthTokenController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TwoFactorSettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TwoFactorSettingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Update2FASettingsHttpRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Update2FASettingsHttpRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/PhoneNumber.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PhoneNumber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthyServiceProvider.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/PhoneNumberRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/PhoneNumberRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/AuthyAppAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuthyAppAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +214,7 @@
       <workItem from="1582924042801" duration="40000" />
       <workItem from="1582924090133" duration="3381000" />
       <workItem from="1583305686520" duration="49787000" />
-      <workItem from="1583834408647" duration="69002000" />
+      <workItem from="1583834408647" duration="69757000" />
     </task>
     <servers />
   </component>
@@ -255,10 +244,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2188" y="27" width="510" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1584026021172" />
-    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584112989625">
+    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584123072100">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1584112989625" />
+    <state x="2646" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/67.27.1853.1053@1920.0.1920.1080" timestamp="1584123072100" />
     <state x="2087" y="125" width="1653" height="855" key="DiffContextDialog" timestamp="1584096944135">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

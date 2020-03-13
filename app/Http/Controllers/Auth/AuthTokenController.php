@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
-use App\Actions\User\GetUserById\GetUserByIdAction;
-use App\Actions\User\GetUserById\GetUserByIdRequest;
+use App\Actions\User\GetUserByIdAction;
+use App\Actions\User\GetUserByIdRequest;
 use App\Exceptions\InvalidTokenException;
 use App\Exceptions\SmsRequestFailedException;
 use App\Http\Controllers\Controller;
