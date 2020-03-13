@@ -11,7 +11,6 @@ use App\Exceptions\SmsRequestFailedException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VerifyTokenHttpRequest;
 use App\Services\AuthyAuthentication;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -63,7 +62,6 @@ class AuthTokenController extends Controller
         $user = $this->getUserByIdAction->execute(
             new GetUserByIdRequest($request->session()->get('authy.user_id'))
         );
-//        $user = User::findOrFail($request->session()->get('authy.user_id'));
 
         if (!$user->hasSmsTwoFactorAuthenticationEnabled()) {
             return redirect()->back();

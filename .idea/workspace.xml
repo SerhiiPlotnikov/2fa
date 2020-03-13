@@ -4,16 +4,7 @@
     <list default="true" id="fa1d0da5-92a8-49a1-8af0-314d12a4877f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthTokenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthTokenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TwoFactorSettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TwoFactorSettingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Update2FASettingsRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Update2FASettingsHttpRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/AuthyAuthentication.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuthyAuthentication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/PhoneService.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/qr.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/qr.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/token.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/token.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/settings/twofactor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/settings/twofactor.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/AuthyAppAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuthyAppAuthenticator.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +213,7 @@
       <workItem from="1582924042801" duration="40000" />
       <workItem from="1582924090133" duration="3381000" />
       <workItem from="1583305686520" duration="49787000" />
-      <workItem from="1583834408647" duration="49566000" />
+      <workItem from="1583834408647" duration="51034000" />
     </task>
     <servers />
   </component>
