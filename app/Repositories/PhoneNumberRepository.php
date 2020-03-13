@@ -8,9 +8,18 @@ use App\User;
 
 class PhoneNumberRepository
 {
-    public function updateByUser(User $user, string $phoneNumber, string $diallingCode): void
+    public function updateByUser(User $user, ?string $phoneNumber, ?string $diallingCode): void
     {
-        $user->phoneNumber()->update(
+        if ($user->phoneNumber()->exists()) {
+            $user->phoneNumber()->update(
+                [
+                    'phone_number' => $phoneNumber,
+                    'dialling_code_id' => $diallingCode
+                ]
+            );
+            return;
+        }
+        $user->phoneNumber()->create(
             [
                 'phone_number' => $phoneNumber,
                 'dialling_code_id' => $diallingCode

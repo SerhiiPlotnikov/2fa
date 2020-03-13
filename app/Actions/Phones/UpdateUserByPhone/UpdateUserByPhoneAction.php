@@ -11,7 +11,7 @@ use App\Repositories\UserRepository;
 use App\Services\AuthyAuthentication;
 use Illuminate\Database\DatabaseManager;
 
-class UpdateUserByPhoneAction
+final class UpdateUserByPhoneAction
 {
     private PhoneNumberRepository $phoneNumberRepository;
     private UserRepository $userRepository;

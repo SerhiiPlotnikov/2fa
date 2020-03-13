@@ -9,23 +9,28 @@ use App\Http\Requests\Update2FASettingsHttpRequest;
 use App\Services\AuthyAuthentication;
 use App\Actions\Phones\GetDiallingCodes\GetDiallingCodesAction;
 use App\Actions\Phones\UpdateUserByPhoneAction;
+use App\User;
+use Illuminate\Config\Repository as Config;
 use Illuminate\Http\Request;
 use App\Actions\Phones\UpdateUserByPhone\UpdateUserByPhoneRequest;
 
-class TwoFactorSettingsController extends Controller
+final class TwoFactorSettingsController extends Controller
 {
     private AuthyAuthentication $authy;
     private GetDiallingCodesAction $getDiallingCodesAction;
     private UpdateUserByPhoneAction $updateUserByPhoneAction;
+    private Config $config;
 
     public function __construct(
         AuthyAuthentication $authy,
         GetDiallingCodesAction $getDiallingCodesAction,
-        UpdateUserByPhoneAction $updateUserByPhoneAction
+        UpdateUserByPhoneAction $updateUserByPhoneAction,
+        Config $config
     ) {
         $this->authy = $authy;
         $this->getDiallingCodesAction = $getDiallingCodesAction;
         $this->updateUserByPhoneAction = $updateUserByPhoneAction;
+        $this->config = $config;
     }
 
     public function index(Request $request)
@@ -35,7 +40,7 @@ class TwoFactorSettingsController extends Controller
             [
                 'diallingCodes' => $this->getDiallingCodesAction->execute(),
                 'user' => $request->user(),
-                'twoFactorTypes' => config('twofactor.types')
+                'twoFactorTypes' => $this->config->get('twofactor.types')
             ]
         );
     }
@@ -46,18 +51,17 @@ class TwoFactorSettingsController extends Controller
 
         try {
             $this->updateUserByPhoneAction->execute(
-                new UpdateUserByPhoneRequest(
+               new UpdateUserByPhoneRequest(
                     $user,
                     $request->getPhoneNumber(),
                     $request->getDiallingCode(),
                     $request->getAuthType()
-                )
-            );
+            ));
         } catch (\Throwable $e) {
-            return redirect()->back();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
-        if ($request->getAuthType() === 'google') {
+        if ($request->getAuthType() === User::TWO_FACTOR_AUTH_GOOGLE_APP_TYPE) {
             $qrCode = $this->authy->generateQRCode($user->authy_id, 250, $user->email);
             return redirect()->back()->with(
                 [

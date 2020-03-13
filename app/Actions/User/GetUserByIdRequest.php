@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Actions\User\GetUserById;
+namespace App\Actions\User;
 
 class GetUserByIdRequest
 {

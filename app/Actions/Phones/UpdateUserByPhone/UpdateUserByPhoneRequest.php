@@ -9,11 +9,11 @@ use App\User;
 class UpdateUserByPhoneRequest
 {
     private User $user;
-    private string $phoneNumber;
-    private string $diallingCode;
+    private ?string $phoneNumber;
+    private ?string $diallingCode;
     private string $authType;
 
-    public function __construct(User $user, string $phoneNumber, string $diallingCode, string $authType)
+    public function __construct(User $user, ?string $phoneNumber, ?string $diallingCode, string $authType)
     {
         $this->user = $user;
         $this->phoneNumber = $phoneNumber;
@@ -26,12 +26,12 @@ class UpdateUserByPhoneRequest
         return $this->user;
     }
 
-    public function getPhoneNumber(): string
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
-    public function getDiallingCode(): string
+    public function getDiallingCode(): ?string
     {
         return $this->diallingCode;
     }

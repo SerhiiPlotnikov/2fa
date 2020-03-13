@@ -6,18 +6,17 @@ namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+final class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public const TWO_FACTOR_AUTH_SMS_TYPE = 'sms';
+    public const TWO_FACTOR_AUTH_GOOGLE_APP_TYPE = 'google';
+
     protected $fillable = [
         'name',
         'email',
@@ -26,26 +25,20 @@ class User extends Authenticatable
         'authy_id'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function phoneNumber()
+    protected $with = [
+        'phoneNumber'
+    ];
+
+    public function phoneNumber(): HasOne
     {
         return $this->hasOne(PhoneNumber::class);
     }
@@ -57,18 +50,19 @@ class User extends Authenticatable
 
     public function hasSmsTwoFactorAuthenticationEnabled(): bool
     {
-        return $this->two_factor_type === 'sms';
+        return $this->two_factor_type === self::TWO_FACTOR_AUTH_SMS_TYPE;
     }
 
     public function hasDiallingCode(int $diallingCodeId): bool
     {
-        if ($this->hasPhoneNumber()) {
+        if ($this->phoneNumber()->exists()) {
             return $this->phoneNumber->diallingCode->id === $diallingCodeId;
         }
+
         return false;
     }
 
-    public function hasPhoneNumber()
+    public function hasPhoneNumber(): bool
     {
         return $this->whereHas(
             'phoneNumber',
@@ -76,15 +70,14 @@ class User extends Authenticatable
                 $query->whereNotNull('phone_number');
             }
         )->exists();
-//        return $this->phoneNumber && $this->phoneNumber->phone_number !== null;
     }
 
-    public function getPhoneNumber(): string
+    public function getPhoneNumber(): ?string
     {
         if ($this->hasPhoneNumber()) {
             return $this->phoneNumber->phone_number;
         }
-        return '';
+        return null;
     }
 
     public function registeredForTwoFactorAuthentication(): bool

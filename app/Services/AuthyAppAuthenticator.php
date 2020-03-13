@@ -18,7 +18,7 @@ class AuthyAppAuthenticator extends Authenticator
         $response = $this->client->requestSms($user->authy_id);
 
         if (!$response->ok()) {
-//            dd($response);
+            dd($response);
             throw new SmsRequestFailedException();
         }
 

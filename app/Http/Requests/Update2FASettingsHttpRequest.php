@@ -30,12 +30,12 @@ class Update2FASettingsHttpRequest extends FormRequest
         ];
     }
 
-    public function getPhoneNumber(): string
+    public function getPhoneNumber(): ?string
     {
         return $this->get('phone_number');
     }
 
-    public function getDiallingCode(): string
+    public function getDiallingCode(): ?string
     {
         return $this->get('phone_number_dialling_code');
     }
